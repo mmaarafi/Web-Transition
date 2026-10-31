@@ -7,12 +7,12 @@
 // 	}, 500);
 // }
 
-// function connectUser(username, callback) {
-// 	setTimeout( () => {
-// 		console.log(username + "connected sequence initiated");
-// 		callback(null, {userId : 42, username: username});
-// 	}, 500);
-// };
+    // function connectUser(username, callback) {
+    // 	setTimeout( () => {
+    // 		console.log(username + "connected sequence initiated");
+    // 		callback(null, {userId : 42, username: username});
+    // 	}, 500);
+    // };
 
 
 // function getChatRooms(userId, callback) {

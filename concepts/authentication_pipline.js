@@ -37,28 +37,31 @@ function checkAdminAccess(rolesArray) {
 	)
 }
 
-// verifyCredentials("mmaarafi", "Ninja").then((token) => {
-// 	return (fetchUserRoles(token));
-// }).then((array) => {
-// 	return(checkAdminAccess(array))
-// }).then((login_status) => {
-// 	console.log(login_status)
-// }).catch((error) => {
-// 	console.log(error);
-// })
+console.log(
+	verifyCredentials("mmaarafi", "Ninja").then((token) => {
+		return (fetchUserRoles(token));
+	}).then((array) => {
+		return(checkAdminAccess(array))
+	}).then((login_status) => {
+		console.log(login_status)
+	}).catch((error) => {
+		console.log(error);
+	})
+)
 
-async function performLogin() {
-	try
-	{
-		const token = await verifyCredentials("mmaarafi", "Ninja");
-		const array = await fetchUserRoles(token);
-		const login_status = await checkAdminAccess(array);
-		console.log(login_status);
-	}
-	catch (error)
-	{
-		console.log(error)
-	}
-}
 
-performLogin();
+// async function performLogin() {
+// 	try
+// 	{
+// 		const token = await verifyCredentials("mmaarafi", "Ninja");
+// 		const array = await fetchUserRoles(token);
+// 		const login_status = await checkAdminAccess(array);
+// 		console.log(login_status);
+// 	}
+// 	catch (error)
+// 	{
+// 		console.log(error)
+// 	}
+// }
+
+// performLogin();
