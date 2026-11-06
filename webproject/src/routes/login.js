@@ -11,11 +11,11 @@ router.post("/", async (req, res) => {
 		const token = await verifyCredentials(body.username, body.password);
 		const array = await fetchUserRoles(token);
 		const login_status = await checkAdminAccess(array);
-		res.status(200).json();
+		res.status(200).json({message:login_status});
 	}
 	catch (error)
 	{
-		res.status(401).json();
+		res.status(401).json({message: "error"});
 	}
 })
 
