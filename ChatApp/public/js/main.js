@@ -1,9 +1,5 @@
 const socket = io();
 
-// socket.on('connect', () => {
-//     console.log("connected: ", socket.id);
-// });
-
 const searchParams = new URLSearchParams(window.location.search);
 const username = searchParams.get("username");
 const room = searchParams.get("room");
@@ -20,8 +16,30 @@ const msg = document.getElementById("msg")
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     socket.emit("message", msg.value.trim());
-})  
+    msg.value = '';
+})
 
-socket.on('chatMessage', (message) => {
-    console.log("message i sent: " + message);
+const messages = document.querySelector('.chat-messages');
+
+socket.on('roomBroadcast', ({ message, username }) => {
+  const messageDiv = document.createElement('div');
+  messageDiv.classList.add('message');
+
+  const meta = document.createElement('p');
+  meta.classList.add('meta');
+  meta.textContent = username;
+
+  const time = document.createElement('span');
+  time.textContent = new Date().toLocaleTimeString([], {
+    hour: 'numeric',
+    minute: '2-digit'
+  });
+  meta.append(' ', time);
+
+  const text = document.createElement('p');
+  text.classList.add('text');
+  text.textContent = message;
+
+  messageDiv.append(meta, text);
+  messages.append(messageDiv);
 });

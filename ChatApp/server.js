@@ -20,11 +20,10 @@ io.on('connection', socket => {
     socket.on("message", (message) => {
         if (message)
         {
-            console.log("message received on the server" + message);
-            // message emited to the room the client is currently on
-            // but i dont know how to handle it message emited to the room
-            io.to(socket.data.room).emit("message", message);
-            socket.emit('chatMessage', message);
+            io.to(socket.data.room).emit("roomBroadcast", {
+                message,
+                username: socket.data.username
+            });
         }
     });
 });
